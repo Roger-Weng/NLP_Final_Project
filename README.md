@@ -101,7 +101,8 @@ python run_glue.py
 
 
 # Model ablations
-<!-- Example of training random bias terms (0.04% of total parameters), which matches the size of bm2 and bq2 combined 
+
+Example of training random bias terms (0.04% of total parameters), which matches the size of bm2 and bq2 combined 
 ```
 python run_glue.py 
        --output-path <output_path>\
@@ -111,7 +112,7 @@ python run_glue.py
        --bias-terms query intermediate\ 
        --learning-rate 1e-3\
        --rand-bias True
-``` -->
+``` 
 
 
 
