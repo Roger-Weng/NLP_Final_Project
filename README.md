@@ -104,7 +104,7 @@ python run_glue.py
 
 Example of training random bias terms (0.04% of total parameters), which matches the size of bm2 and bq2 combined 
 ```
-python run_glue.py 
+python run_glue_ablation1.py 
        --output-path <output_path>\
        --task-name rte\
        --model-name bert-base-cased\
