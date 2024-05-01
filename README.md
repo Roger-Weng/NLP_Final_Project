@@ -6,7 +6,7 @@ BitFit is a sparse-finetuning method where only the bias-terms of the model (or 
 Besides their practical utility, these findings are relevant for the question of understanding the commonly-used process of finetuning: they support the hypothesis that finetuning is mainly about exposing knowledge induced by language-modeling training, rather than learning new task-specific linguistic knowledge. 
 
 # Environment 
-First, create an environment with all the dependencies:
+First, downlaoad all necessary packages, or create an environment with all the dependencies:
 ```
 $ conda env create -n bitfit_env -f environment.yml
 ```
@@ -14,6 +14,23 @@ Then activate it:
 ```
 $ conda activate bitfit_env
 ```
+
+
+# Model ablations
+
+Example of training random bias terms (0.04% of total parameters), which matches the size of bm2 and bq2 combined 
+```
+python run_glue_ablation1.py 
+       --output-path <output_path>\
+       --task-name rte\
+       --model-name bert-base-cased\
+       --fine-tune-type bitfit\
+       --bias-terms query intermediate\ 
+       --learning-rate 1e-3\
+       --rand-bias True
+``` 
+
+
 
 # [GLUE Benchmark](https://arxiv.org/abs/1804.07461) evaluation examples:
 
@@ -98,22 +115,6 @@ python run_glue.py
        --fine-tune-type rand_uniform\
        --learning-rate 1e-3
 ``` -->
-
-
-# Model ablations
-
-Example of training random bias terms (0.04% of total parameters), which matches the size of bm2 and bq2 combined 
-```
-python run_glue_ablation1.py 
-       --output-path <output_path>\
-       --task-name rte\
-       --model-name bert-base-cased\
-       --fine-tune-type bitfit\
-       --bias-terms query intermediate\ 
-       --learning-rate 1e-3\
-       --rand-bias True
-``` 
-
 
 
 # MIT License
