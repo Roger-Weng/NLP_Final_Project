@@ -1,8 +1,8 @@
 # BitFit [(Paper)](https://arxiv.org/abs/2106.10199)
-Simple Parameter-efficient Fine-tuning for Transformer-based Masked Language-models
+We replicate BitFit and perform model ablations: a Simple Parameter-efficient Fine-tuning for Transformer-based Masked Language-models
 
 # Abstract
-We introduce BitFit, a sparse-finetuning method where only the bias-terms of the model (or a subset of them) are being modified. We show that with small-to-medium training data, applying BitFit on pre-trained BERT models is competitive with (and sometimes better than) fine-tuning the entire model. For larger data, the method is competitive with other sparse fine-tuning methods.
+BitFit is a sparse-finetuning method where only the bias-terms of the model (or a subset of them) are being modified. We show that with small-to-medium training data, applying BitFit on pre-trained BERT models is competitive with (and sometimes better than) fine-tuning the entire model. For larger data, the method is competitive with other sparse fine-tuning methods.
 Besides their practical utility, these findings are relevant for the question of understanding the commonly-used process of finetuning: they support the hypothesis that finetuning is mainly about exposing knowledge induced by language-modeling training, rather than learning new task-specific linguistic knowledge. 
 
 # Environment 
@@ -98,6 +98,22 @@ python run_glue.py
        --fine-tune-type rand_uniform\
        --learning-rate 1e-3
 ``` -->
+
+
+# Model ablations
+<!-- Example of training random bias terms (0.04% of total parameters), which matches the size of bm2 and bq2 combined 
+```
+python run_glue.py 
+       --output-path <output_path>\
+       --task-name rte\
+       --model-name bert-base-cased\
+       --fine-tune-type bitfit\
+       --bias-terms query intermediate\ 
+       --learning-rate 1e-3\
+       --rand-bias True
+``` -->
+
+
 
 # MIT License
 
